@@ -1,5 +1,5 @@
 ## Running each component
-Create a seperate bash window for each component
+Create a seperate bash window for each component<br />
 cd into the component
 
 ### Frontend

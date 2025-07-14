@@ -2,6 +2,7 @@
 
 ## Virtual Environment Cheat Sheet
 | Command | Action |
+| ------------- | ------------- |
 | source virtualEnv/Scripts/activate | starts the virtual environment |
 | deactivate | Exit the virtual environment | 
 | pip list | Show installed packages | 
