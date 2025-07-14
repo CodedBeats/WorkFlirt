@@ -1,0 +1,21 @@
+# frontend
+frontend/node_modules/
+frontend/.env
+frontend/build/
+
+
+# backend
+backend/node_modules/
+backend/.env
+
+
+# scraper
+scraper/__pycache__/
+scraper/.venv/
+scraper/*.pyc
+
+
+# general
+.DS_Store
+.env
+*.log
