@@ -10,9 +10,15 @@ backend/.env
 
 
 # scraper
+scraper/virtualEnv/
 scraper/__pycache__/
-scraper/.venv/
 scraper/*.pyc
+scraper/*.pyo
+scraper/*.pyd
+scraper/.python-version
+# selenium (when used)
+scraper/geckodriver.log
+scraper/chromedriver
 
 
 # general
