@@ -19,7 +19,7 @@ const Layout = () => (
 
 function App() {
     return (
-        <div className="app">
+        <div className="app h-screen">
             <Router>
                 <Routes>
                     <Route element={<Layout />}>
