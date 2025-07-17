@@ -2,7 +2,7 @@
 const Saved = () => {
     return (
         <div>
-            <h1>Home</h1>
+            <h1>Saved</h1>
         </div>
     )
 }
