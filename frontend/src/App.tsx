@@ -1,29 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// dependencies
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// pages
+import Home from "./pages/Home";
+import Saved from "./pages/Saved";
+import Profile from "./pages/Profile";
+
+// components
+import { BottomNav } from "./components/nav/BottomNav";
+
+// layout component
+const Layout = () => (
+    <>
+        <BottomNav />
+    </>
+);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <h1 className="text-3xl font-bold underline">
-          Hello world!
-        </h1>
-      </header>
-    </div>
-  );
+    return (
+        <div className="app">
+            <Router>
+                <Routes>
+                    <Route element={<Layout />}>
+                        {/* home */}
+                        <Route path="/connect" element={<Home />} />
+                        <Route path="/" element={<Home />} />
+
+                        {/* profile */}
+                        <Route path="/profile" element={<Profile />} />
+
+                        {/* saved */}
+                        <Route path="/saved" element={<Saved />} />
+                    </Route>
+                </Routes>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
