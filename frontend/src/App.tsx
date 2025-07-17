@@ -27,7 +27,7 @@ function App() {
                 <Routes>
                     <Route element={<Layout />}>
                         {/* home */}
-                        <Route path="/connect" element={<Home />} />
+                        <Route path="/home" element={<Home />} />
                         <Route path="/" element={<Home />} />
 
                         {/* profile */}

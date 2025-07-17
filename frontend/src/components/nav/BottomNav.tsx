@@ -6,11 +6,10 @@ import clsx from 'clsx';
 import { formatForIcon } from "../../util/IconUtil";
 
 // icons
-import { FaArchive, FaUser }  from "react-icons/fa";
-import { FaCircleNodes } from "react-icons/fa6";
+import { FaArchive, FaUser, FaHandHoldingHeart }  from "react-icons/fa";
 const ArchiveIcon = formatForIcon(FaArchive);
 const UserIcon = formatForIcon(FaUser);
-const NodesIcon = formatForIcon(FaCircleNodes);
+const HeartIcon = formatForIcon(FaHandHoldingHeart);
 
 
 export const BottomNav = () => {
@@ -20,7 +19,7 @@ export const BottomNav = () => {
             <NavItem pathName="/saved" reactIcon={ArchiveIcon} pageName="Saved" />
 
             {/* connect - nav item */}
-            <NavItem pathName="/" reactIcon={NodesIcon} pageName="Connect" />
+            <NavItem pathName="/" reactIcon={HeartIcon} pageName="Flirt" />
 
             {/* profile - nav item */}
             <NavItem pathName="/profile" reactIcon={UserIcon} pageName="Profile" />
