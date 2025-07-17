@@ -14,7 +14,7 @@ const HeartIcon = formatForIcon(FaHandHoldingHeart);
 
 export const BottomNav = () => {
     return (
-        <div className="w-full flex justify-around items-center gap-x-4 bg-[#403D39] p-4 fixed bottom-[0]">
+        <div className="w-full flex justify-around items-center gap-x-4 bg-[#252422] p-4 fixed bottom-[0]">
             {/* saved - nav item */}
             <NavItem pathName="/saved" reactIcon={ArchiveIcon} pageName="Saved" />
 

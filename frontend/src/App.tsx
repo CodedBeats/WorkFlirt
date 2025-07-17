@@ -13,7 +13,7 @@ import { BottomNav } from "./components/nav/BottomNav";
 // layout component, all pages scrollable with bottom nav fixed
 const Layout = () => (
     <div className="flex flex-col flex-1">
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto bg-[#403D39] pb-[7rem]">
             <Outlet />
         </div>
         <BottomNav />
