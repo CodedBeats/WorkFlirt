@@ -16,6 +16,7 @@ Run `python main.py` to run the scraper
 
 
 ## Commit Message Style Examples
-feat(frontend): add swipe animation<br />
+feat(frontend): added swipe animation<br />
+refactor(frontend): added sub component for info blocks<br />
 fix(backend): handle scraper timeout<br />
 docs: update README
