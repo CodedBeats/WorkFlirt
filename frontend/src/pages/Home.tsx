@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 
 // components
 import { JobInfoBlock } from "../components/ui/JobInfoBlock";
+import { formatForIcon } from "../util/IconUtil";
 
+// icons
+import { MdOutlineDataSaverOn } from "react-icons/md";
+import { IoMdCloseCircle } from "react-icons/io";
+const SaveIcon = formatForIcon(MdOutlineDataSaverOn);
+const CloseIcon = formatForIcon(IoMdCloseCircle);
 
 
 const Home = () => {
@@ -13,6 +19,15 @@ const Home = () => {
     // togle description visible
     const toggleDescription = () => {
         setDescriptionVisible(prev => !prev);
+    }
+
+    // save job
+    const handleSaveJob = () => {
+        console.log("save job");
+    }
+    // dismiss job
+    const handleDismissJob = () => {
+        console.log("dismiss job");
     }
 
     useEffect(() => {
@@ -29,7 +44,7 @@ const Home = () => {
     }, [])
 
     return (
-        <div className="flex flex-col flex-1 p-4 gap-y-5">
+        <div className="flex flex-col justify-center items-center flex-1 p-4 gap-y-5">
             {/* employer header */}
             <div className="relative h-[300px] w-full rounded-md overflow-hidden shadow-[2px_4px_5px_#000000aa]">
                 {/* bg img */}
@@ -83,8 +98,13 @@ const Home = () => {
             </JobInfoBlock>
             
             {/* save / dismiss */}
-            <div>
-
+            <div className="fixed w-[45%] bottom-[6.5em] flex justify-between items-center gap-x-4 bg-[#00000066] backdrop-blur-sm px-3 py-1 rounded-full border border-black">
+                <button onClick={handleDismissJob}>
+                    <CloseIcon className="text-5xl text-[#f00] bg-[#000] rounded-full" />
+                </button>
+                <button onClick={handleSaveJob}>
+                    <SaveIcon className="text-5xl text-[#0f0] bg-[#000] rounded-full" />
+                </button>
             </div>
         </div>
     )
