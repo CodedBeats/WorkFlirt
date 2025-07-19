@@ -1,6 +1,9 @@
 // dependencies
 import { useEffect, useState } from "react";
 
+// components
+import { JobInfoBlock } from "../components/ui/JobInfoBlock";
+
 
 
 const Home = () => {
@@ -28,7 +31,7 @@ const Home = () => {
     return (
         <div className="flex flex-col flex-1 p-4 gap-y-5">
             {/* employer header */}
-            <div className="relative h-[300px] w-full rounded-md overflow-hidden">
+            <div className="relative h-[300px] w-full rounded-md overflow-hidden shadow-[2px_4px_5px_#000000aa]">
                 {/* bg img */}
                 <div className="absolute inset-0 bg-[url('https://avatars.githubusercontent.com/u/2232217?s=200&v=4')] bg-cover bg-center" />
 
@@ -52,7 +55,7 @@ const Home = () => {
             </div>
 
             {/* job title + description */}
-            <div className="flex flex-col gap-y-4 bg-[#E4DED4] p-2 rounded-md">
+            <div className="flex flex-col gap-y-4 bg-[#E4DED4] p-2 rounded-md shadow-[2px_4px_5px_#000000aa]">
                 <div className="flex justify-between items-center">
                     <h1 className="text-2xl font-bold">Job</h1>
                     <button className="bg-[#EB5E28] text-white px-3 rounded-md" onClick={toggleDescription}>v</button>
@@ -61,35 +64,23 @@ const Home = () => {
                     {jobData?.title}
                 </div>
                 { descriptionVisible &&
-                    <div className="text-lg">
+                    <div className="text-sm">
                         {jobData?.description}
                     </div>
                 }
-            </div>
-            
-            {/* experience */}
-            <div className="flex flex-col gap-y-4 bg-[#E4DED4] p-2 rounded-md">
-                <h1 className="text-2xl font-bold">Experience</h1>
-                <div>{jobData?.experience}</div>
-            </div>
-            
-            {/* education */}
-            <div className="flex flex-col gap-y-4 bg-[#E4DED4] p-2 rounded-md">
-                <h1 className="text-2xl font-bold">Education</h1>
-                <div>{jobData?.education}</div>
-            </div>
-            
-            {/* skills */}
-            <div className="flex flex-col gap-y-4 bg-[#E4DED4] p-2 rounded-md">
-                <h1 className="text-2xl font-bold">Skills</h1>
+            </div >
+
+            <JobInfoBlock title="Experience">{jobData?.experience}</JobInfoBlock>
+            <JobInfoBlock title="Education">{jobData?.education}</JobInfoBlock>
+            <JobInfoBlock title="Skills">
                 <div className="flex flex-wrap gap-x-2 p-2">
-                    {jobData?.skills.map((skill: string, index: number) => (
-                        <div key={index} className="flex justify-between items-center bg-[#ffffffaa] p-2 rounded-full">
-                            <div className="text-lg">{skill}</div>
-                        </div>
+                    {jobData?.skills.map((skill: string, i: number) => (
+                    <div key={i} className="bg-[#ffffffaa] p-2 rounded-full text-sm shadow-[2px_3px_5px_#00000088]">
+                        {skill}
+                    </div>
                     ))}
                 </div>
-            </div>
+            </JobInfoBlock>
             
             {/* save / dismiss */}
             <div>
