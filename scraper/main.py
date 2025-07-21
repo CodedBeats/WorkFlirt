@@ -1,1 +1,2 @@
 init = "yellow"
+print(init)
