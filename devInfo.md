@@ -1,6 +1,7 @@
 ## Running each component
 Create a seperate bash window for each component<br />
-cd into the component
+Open the VSCode project in the component folder<br />
+Make sure bash directory path is in component folder
 
 ### Frontend
 Run `npm start`
