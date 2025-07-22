@@ -12,3 +12,6 @@
 ## check virtual environment is running
 run `where python`
 if it shows `((virtualEnv) )` then it's running
+
+## install requirements
+run `pip install -r requirements.txt`

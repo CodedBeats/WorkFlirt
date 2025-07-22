@@ -13,6 +13,7 @@ backend/.env
 scraper/virtualEnv/
 scraper/venv/
 scraper/__pycache__/
+scraper/scrape/__pycache__/
 scraper/*.pyc
 scraper/*.pyo
 scraper/*.pyd

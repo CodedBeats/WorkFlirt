@@ -1,2 +1,3 @@
-init = "yellow"
-print(init)
+from scrape.indeed_scraper import scrapeIndeed
+
+scrapeIndeed()
