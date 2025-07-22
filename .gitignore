@@ -11,6 +11,7 @@ backend/.env
 
 # scraper
 scraper/virtualEnv/
+scraper/venv/
 scraper/__pycache__/
 scraper/scrape/__pycache__/
 scraper/*.pyc
