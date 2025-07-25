@@ -21,3 +21,15 @@ feat(frontend): added swipe animation<br />
 refactor(frontend): added sub component for info blocks<br />
 fix(backend): handle scraper timeout<br />
 docs: update README
+
+
+
+## Data Flow between components
+Frontend -> Backend `GET /api/jobs/scrape?title=react&location=sydney`<br />
+Backend -> Flask Scraper `GET http://localhost:5002/scrape?job_title=react&job_location=sydney`<br />
+<br />
+Scraper gets and combines data from  job boards<br />
+Scraper returns jobs as json to Backend<br />
+<br />
+Backend process and formats data<br />
+Backend returns jobs as json to Frontend
