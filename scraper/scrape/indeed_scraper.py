@@ -18,13 +18,10 @@ def human_like_delay(min_sec=1, max_sec=3):
 driver = uc.Chrome(version_main=138)
 
 
-# customise search
-job_title = "Website Developer"
-location = "Remote"
-url = f"https://www.indeed.com/jobs?q={job_title.replace(' ', '+')}&l={location.replace(' ', '+')}"
 
 
-def get_job_listings(malubleBrowser):
+
+def get_job_listings(malubleBrowser, url):
     try:
         # navigate to Indeed
         print("navigating to indeed (with search params)")
@@ -113,9 +110,12 @@ def get_job_listings(malubleBrowser):
 
 
 # handler function to be called by main
-def scrapeIndeed():
+def scrapeIndeed(job_ttile: str = "Website Developer", job_location: str = "Remote"):
+    # customise search
+    url = f"https://www.indeed.com/jobs?q={job_ttile.replace(' ', '+')}&l={job_location.replace(' ', '+')}"
+
     try:
-        get_job_listings(driver)
+        get_job_listings(driver, url)
     except Exception as e:
         print(f"An error occurred: {str(e)}")
     finally:
