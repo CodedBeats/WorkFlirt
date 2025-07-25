@@ -5,19 +5,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import time
 import random
-# better stealthy selenium
-import undetected_chromedriver as uc
 
 
 # util
 def human_like_delay(min_sec=1, max_sec=3):
     time.sleep(random.uniform(min_sec, max_sec))
-
-
-# startup maluable browser
-driver = uc.Chrome(version_main=138)
-
-
 
 
 
@@ -49,8 +41,7 @@ def get_job_listings(malubleBrowser, url):
                 break
         
         if verification_attempts >= max_attempts:
-            print("failed verification after multiple attempts")
-            exit()
+            return {"error": "failed verification after multiple attempts"}
         
 
         # JOB LISTINGS
@@ -62,7 +53,7 @@ def get_job_listings(malubleBrowser, url):
             # im a fancy real boy!
             human_like_delay()
         except:
-            print("timed out :(")
+            return {"error": "timed out waiting for job listings :("}
         
         # parse page to beautiful soup
         soup = BeautifulSoup(malubleBrowser.page_source, 'html.parser')
@@ -73,6 +64,7 @@ def get_job_listings(malubleBrowser, url):
                     soup.find_all('div', class_='job-listing')
         
         # job listings found
+        results = []
         if job_listings:
             print(f"found {len(job_listings)} job listings")
             
@@ -87,39 +79,27 @@ def get_job_listings(malubleBrowser, url):
                 location = job.find('div', {'data-testid': 'text-location'}).get_text(strip=True) if job.find('div', {'data-testid': 'text-location'}) else "N/A"
                 job_link = "https://www.indeed.com" + job.find('h2', class_='jobTitle').find('a')['href'] if job.find('h2', class_='jobTitle') and job.find('h2', class_='jobTitle').find('a') else "N/A"
                 
-                # log job
-                print(f"\nListing {i+1}:")
-                print(f"Title: {title}")
-                print(f"Company: {company}")
-                print(f"Location: {location}")
-                print(f"Job Link: {job_link}")
-                print("-" * 50)
+                results.append({
+                    "title": title,
+                    "company": company,
+                    "location": location,
+                    "link": job_link
+                })
         
-        # no job listings found
-        else:
-            print("no job listings found")
+        return {"success": True, "jobs": results} if results else {"error": "No jobs found"}
             
     # error
     except Exception as e:
-        print(f"error occurred: {str(e)}")
+        return {"error": f"Scraping error: {str(e)}"}
     
-    # after error or success
-    finally:
-        input("Press Enter to close the browser...")
-        malubleBrowser.quit()
 
 
 # handler function to be called by main
-def scrapeIndeed(job_ttile: str = "Website Developer", job_location: str = "Remote"):
+def scrapeIndeed(driver, job_ttile: str = "Website Developer", job_location: str = "Remote"):
     # customise search
     url = f"https://www.indeed.com/jobs?q={job_ttile.replace(' ', '+')}&l={job_location.replace(' ', '+')}"
 
-    try:
-        get_job_listings(driver, url)
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-    finally:
-        input("Press Enter to stop program...")
+    return get_job_listings(driver, url)
 
 
 # scrapeIndeed()
