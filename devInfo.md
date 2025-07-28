@@ -25,8 +25,8 @@ docs: update README
 
 
 ## Data Flow between components
-Frontend -> Backend `GET /api/jobs/scrape?title=react&location=sydney`<br />
-Backend -> Flask Scraper `GET http://localhost:5002/scrape?job_title=react&job_location=sydney`<br />
+Frontend -> Backend `GET http://localhost:5001/api/jobs/scrape?job_title=${jobTitle}&job_location=${jobLocation}`<br />
+Backend -> Flask Scraper `GET http://localhost:5002/scrape?job_title=${jobTitle}&job_location=${jobLocation}`<br />
 <br />
 Scraper gets and combines data from  job boards<br />
 Scraper returns jobs as json to Backend<br />

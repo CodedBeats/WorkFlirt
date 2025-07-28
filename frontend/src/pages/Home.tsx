@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { JobInfoBlock } from "../components/ui/JobInfoBlock";
 import { formatForIcon } from "../util/IconUtil";
 
+// api
+import { getJobListings } from "../api/scraperAPI";
+
 // icons
 import { MdOutlineDataSaverOn } from "react-icons/md";
 import { IoMdCloseCircle } from "react-icons/io";
@@ -40,6 +43,9 @@ const Home = () => {
             experience: "Bachelor Degree in related field",
             education: "Education",
             skills: ["Skill 1", "Skill 2", "Skill 3"]
+        })
+        getJobListings("react", "remote").then(res => {
+            console.log(res);
         })
     }, [])
 
