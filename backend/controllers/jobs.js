@@ -2,19 +2,20 @@ import axios from "axios";
 
 export const scrapeJobs = async (req, res) => {
     try {
-        const { title, location } = req.query;
+        const { job_title, job_location } = req.query;
+        // console.log(job_title, job_location);
 
-        if (!title) {
-            return res.status(400).json({ error: "title required" });
+        if (!job_title) {
+            return res.status(400).json({ error: "job_title required" });
         }
 
-        console.log(`forwarding to scraper: [${title}]job in [${location || 'any location'}]location`);
+        console.log(`forwarding to scraper: [${job_title}]job in [${job_location || 'any location'}]location`);
 
         // call Flask scraper API
         const response = await axios.get("http://localhost:5002/scrape", {
             params: {
-                job_title: title,
-                job_location: location || '',
+                job_title: job_title,
+                job_location: job_location || '',
             },
             timeout: 60000 // 1 min timeout
         });
@@ -26,9 +27,10 @@ export const scrapeJobs = async (req, res) => {
         };
 
         res.json(result);
+        console.log("returning data to frontend from scraper");
 
     } catch (error) {
-        console.error('scraper flask api endpoint failed:', error.message);
+        console.error('flask scraper api endpoint failed:', error.message);
     
         if (error.code === 'ECONNABORTED') {
             res.status(504).json({ error: "scraper service timeout" });
